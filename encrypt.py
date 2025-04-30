@@ -16,6 +16,7 @@ c = line1[1]
 N = random.randrange(10)
 
 '''
+
 FOR THE GRADER:
 
 I PURPOSELY LIMITED THE RANGE OF N to 10 FOR PERFORMANCE REASONS!
