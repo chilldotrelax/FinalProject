@@ -1,7 +1,14 @@
+'''
+Andy Huang ECE 160 (Decrypter)
+
+'''
+
+#Import important module.
 import copy
-line1 = input().split()
-line2 = input().split()
-line3 = input().split()
+
+line1 = input().split() #Row Column N
+line2 = input().split() #Key Received
+line3 = input().split() #Matrix
 
 #row, col, N 
 r = int(line1[0])
@@ -15,12 +22,15 @@ for i in range(0, len(line2), 2): #Two cols max.
     swapper = line2[i:i+2]
     line2Matrix.append(swapper)
 
+#Reverses line2Matrix => fit encrypter.
+
+line2Matrix.reverse()
 
 matrix = []
 
 #Assign a matrix to data, row first column second
-for i in range(0, len(line3), 3): #Three cols max.
-    swapper = line3[i:i+3]
+for i in range(0, len(line3), int(c)): #This determines the column length (step = c or column length)
+    swapper = line3[i:i+int(c)] #Performs a list slice from line3 at some point of iteration at i to i after c.
     matrix.append(swapper)
 
 
@@ -33,7 +43,7 @@ count = 0
 #I tweaked out writing this 
 while True:
     if N == 1:
-        for k in range(N * 2):
+        for k in range(N):
             if k % 2 == 0 or k == 0: #Swaps row, even
                 copyMatrix = tuple(matrix)
                 matrix[int(line2Matrix[k][1])]= copyMatrix[int(line2Matrix[k][0])]
@@ -45,7 +55,7 @@ while True:
                     matrix[i][int(line2Matrix[k][0])] = copyMatrix2[i][int(line2Matrix[k][1])]
         break
     elif N > 1 and count < N: #If N is more than 1 , repeat the process N - times.
-        for k in range(N * 2):
+        for k in range(N):
             if k % 2 == 0 or k == 0: #Swaps row, even
                 copyMatrix = tuple(matrix)
                 matrix[int(line2Matrix[k][1])]= copyMatrix[int(line2Matrix[k][0])]

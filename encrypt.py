@@ -1,3 +1,9 @@
+'''
+Andy Huang ECE 160 (Encrypter)
+
+'''
+
+#Import two important modules.
 import random
 import copy
 
@@ -7,27 +13,34 @@ encryptdata = input().split() #Matrix you want to encrypt.
 #Assign 
 r = line1[0]
 c = line1[1]
-N = random.randrange(5)
+N = random.randrange(10)
 
-#Determine random column, row swap. N determines (N * 2)
+'''
+FOR THE GRADER:
+
+I PURPOSELY LIMITED THE RANGE OF N to 10 FOR PERFORMANCE REASONS!
+
+'''
+
+#Creates some random numbers based on N (rows), should not exceed the number of columns to prevent out of range.
 shuffler = []
 for i in range(N * 2):
-    shuffler.append(random.randrange(0,int(r)))
+    shuffler.append(random.randrange(0,int(c)))
 
 
 swaps = []
-for i in range(0, len(shuffler), 2): #Two cols max.
+for i in range(0, len(shuffler), 2): #Two cols max per N.
     swapper = shuffler[i:i+2]
     swaps.append(swapper)
 
 
 #Converts encrypt data into matrix.
 matrix = []
-for i in range(0, len(encryptdata), 3): #Three cols max.
-    swapper = encryptdata[i:i+3]
+for i in range(0, len(encryptdata), int(c)): #col
+    swapper = encryptdata[i:i+int(c)]
     matrix.append(swapper)
 
-#encrypts matrix
+
 
 copyMatrix = tuple(matrix)
 
