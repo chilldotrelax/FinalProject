@@ -14,7 +14,9 @@ def matrixSymmetricVerify(row, coln, matrixBuilt):
                 score += 1
                 if score == (row - 1): matrixTransposer(row,coln,score, matrixBuilt)
                 continue
-            else: matrixTransposer(row,coln,score, matrixBuilt)
+            else: 
+                matrixTransposer(row,coln,score, matrixBuilt)
+                break
 
 def matrixTransposer(row,coln,score,matrixBuilt):
     if score != (row - 1) or score == 0:
@@ -37,7 +39,6 @@ def matrixTransposer(row,coln,score,matrixBuilt):
             newList2.append(matrixBuilt[i][i])
         newList3 = " ".join(newList2)
         print(f'S {row} {coln}\n{newList3}')
-
 
 test_cases = int(input())
 count = 0
